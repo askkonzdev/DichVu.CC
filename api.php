@@ -47,7 +47,7 @@ class DichVuCC_BaseAPI
             'video_id' => $video_id,
             'total' => 1000
         );
-        $response = json_decode($this->fetch("services/1/tiktok?api_key={$this->api_key}", http_build_query($params)), null, "POST");
+        $response = json_decode($this->fetch("services/1/tiktok?api_key={$this->api_key}", http_build_query($params), null, "POST"));
         if (isset($response->success) && $response->success == true) {
             // Tạo đơn hàng thành công
             // Dữ liệu được trả về
