@@ -134,7 +134,7 @@ class DichVuCC_BaseAPI
                 }
             }';
         } else {
-            // Tạo đơn hàng thất bại
+            // Lấy dữ liệu không thành công
             $response_errors_example = '{
                 "message": ".....",
                 "errors": {
