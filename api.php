@@ -32,6 +32,48 @@ class DichVuCC_BaseAPI
     }
 
     /**
+     * Lấy danh sách List ID Dịch Vụ
+     * 
+     * @method GET
+     */
+    public function services()
+    {
+        $response = json_decode($this->fetch("services"));
+        if (isset($response->success) && $response->success == true) {
+            // Dữ liệu được trả về
+            // 
+            $response_example = '{
+                "success": true,
+                "data": {
+                    "tiktok": [
+                        {
+                            "id": 1,
+                            "name": "Tiktok Follow",
+                            "type": "follow",
+                            "category": "Tiktok",
+                            "rate": 150,
+                            "min": 1000,
+                            "max": 1000000
+                        },
+                        {
+                            "id": 2,
+                            "name": "Tiktok Seending",
+                            "type": "comment",
+                            "category": "Tiktok",
+                            "rate": 100,
+                            "min": 1000,
+                            "max": 100000
+                        }
+                    ]
+                }
+            }';
+        } else {
+            // Tạo đơn hàng thất bại
+            $response_errors_example = '{}';
+        }
+    }
+
+    /**
      * Tạo đơn hàng tăng Follow Tiktok đi kèm với Views Video
      * 
      * @method POST
@@ -134,7 +176,7 @@ class DichVuCC_BaseAPI
                 }
             }';
         } else {
-            // Lấy dữ liệu không thành công
+            // Tạo đơn hàng thất bại
             $response_errors_example = '{
                 "message": ".....",
                 "errors": {
